@@ -1,0 +1,139 @@
+*************************EXCEPTION HANDLING ASSIGNMENTS******************************
+
+1.
+package com.cg.Exception;
+
+import java.util.Scanner;
+
+public class Problem1 extends Exception {
+
+	public static void main(String[] args) {
+		
+		try {
+		
+		int a,b,c;
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Enter the first number");
+		a=sc.nextInt();
+		
+		System.out.println("Enter the second number");
+		b=sc.nextInt();
+		
+		c=a/b;
+		
+		System.out.println("result is:"+c);
+		
+		}
+		catch(ArithmeticException e)
+		{
+			System.out.println("Error:"+e.getMessage());
+			//System.out.println("Error:"+e);
+		} 
+		catch(UnsupportedOperationException e) {
+			System.out.println(e.getMessage());
+		}
+		
+		
+		
+		
+
+	}
+
+}
+OUTPUT:
+Enter the first number
+10
+Enter the second number
+0
+Error:/ by zero
+---------------------------------------------------------------------------------------------------------------------
+2.
+package com.cg.Exception;
+
+import java.util.Scanner;
+
+public class SavingsAcc {
+	
+	public static void main(String[] args) {
+		
+		double balance=2500;
+		
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Enter your id");
+		long id=sc.nextLong();
+		
+		System.out.println("Enter withdrawal amount");
+				
+		try {
+	
+			double withdrawal=sc.nextDouble();
+			
+			if(withdrawal>balance) {
+				throw new InsufficientBalanceException();
+				
+			}
+			else if(withdrawal<=0) {
+				throw new IllegalBankTrasactionException();
+			}
+			else {
+				System.out.println("**********Please Collect Your Cash**********");
+			}
+			
+		} catch (InsufficientBalanceException e) {
+			System.out.println(e.getMessage());
+			
+		}catch (IllegalBankTrasactionException e) {
+			System.out.println(e.getMessage());
+		}
+		
+		
+		
+	}
+
+}
+
+package com.cg.Exception;
+
+public class InsufficientBalanceException extends Exception {
+	
+	public InsufficientBalanceException() {
+		super("oops!!!! your have an insufficient balance");
+	}
+	
+	public InsufficientBalanceException(String message) {
+		super(message);
+	}
+
+}
+
+package com.cg.Exception;
+
+public class IllegalBankTrasactionException extends Exception {
+
+	public IllegalBankTrasactionException() {
+		super("ohh noo!!!! This is not a valid withdrawal amount");
+	}
+	
+	public IllegalBankTrasactionException(String message) {
+		super(message);
+	}
+}
+
+OUTPUT:
+Enter your id
+123
+Enter withdrawal amount
+100
+**********Please Collect Your Cash**********
+
+Enter your id
+123
+Enter withdrawal amount
+2800
+oops!!!! your have an insufficient balance
+
+Enter your id
+123
+Enter withdrawal amount
+0
+ohh noo!!!! This is not a valid withdrawal amount

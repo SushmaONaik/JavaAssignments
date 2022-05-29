@@ -1,0 +1,66 @@
+*********************COLLECTION FRAMEWORK ASSIGNMENT************************
+
+1.
+package com.cg.collections;
+
+import java.util.Map;
+import java.util.Set;
+import java.util.TreeMap;
+
+public class Contact {
+	
+	private String name;
+	private String place;
+	
+	public Contact(String name, String place) {
+		super();
+		this.name = name;
+		this.place = place;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getPlace() {
+		return place;
+	}
+
+	public void setPlace(String place) {
+		this.place = place;
+	}
+
+	@Override
+	public String toString() {
+		return "Contact [name=" + name + ", place=" + place + "]";
+	}
+	
+
+}
+
+	class FetchKeyValue{
+		public static void main(String[] args) {
+			
+			TreeMap<Long,Contact> map=new TreeMap<Long,Contact>();
+			
+			map.put(9901633186L, new Contact("Sama","Sirsi"));
+			map.put(9353547151L, new Contact("Rama","Hubli"));
+			map.put(7891234678L, new Contact("Diya","Karwar"));
+			map.put(8976123653L, new Contact("Neha","Mysore"));
+			
+			Set<Map.Entry<Long,Contact>>entries=map.entrySet();
+			
+			for(Map.Entry<Long, Contact> entry:entries) {
+				System.out.println("Entered keys are:"+entry.getKey());
+				System.out.println("Entered Values are:"+entry.getValue());
+				System.out.println(entry.getKey()+"---->"+entry.getValue());
+				
+			}
+			
+		}
+	}
+

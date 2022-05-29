@@ -1,0 +1,215 @@
+****************************GENERICS ASSIGNMENT********************************
+
+1.
+package com.cg.generics;
+
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Scanner;
+
+class Employee {
+	private Integer id;
+	private String name;
+	private Double salary;
+	private String dept;
+	
+	public Employee(Integer id, String name, Double salary, String dept) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.salary = salary;
+		this.dept = dept;
+	}
+
+	
+	@Override
+	public String toString() {
+		return "Employee [id=" + id + ", name=" + name + ", salary=" + salary + ", dept=" + dept + "]";
+	}
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+
+	public String getName() {
+		return name;
+	}
+
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+
+	public Double getSalary() {
+		return salary;
+	}
+
+
+	public void setSalary(Double salary) {
+		this.salary = salary;
+	}
+
+
+	public String getDept() {
+		return dept;
+	}
+
+
+	public void setDept(String dept) {
+		this.dept = dept;
+	}
+	
+	public static class EmployeeDetails{
+		
+		public static void main(String[] args) {
+			
+			Map<Integer,Employee> emp=new HashMap<>();
+			emp.put(1, new Employee(1,"SUSHMA",15000.50,"CS"));
+			emp.put(2, new Employee(2,"NAGENDRA",20000.50,"ECE"));
+			emp.put(3, new Employee(3,"Sumith",14000.60,"AME"));
+			System.out.println(emp);
+			
+		}
+		
+	}
+}
+OUTPUT:
+{1=Employee [id=1, name=SUSHMA, salary=15000.5, dept=CS], 
+2=Employee [id=2, name=NAGENDRA, salary=20000.5, dept=ECE], 
+3=Employee [id=3, name=Sumith, salary=14000.6, dept=AME]}
+----------------------------------------------------------------------------------------------------------------------
+2.
+package com.cg.generics;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+
+public class ExchangePos {
+	
+	public static final <T> void swap(T[] a,int i,int j) {
+		T t=a[i];
+		a[i]=a[j];
+		a[j]=t;
+	}
+	
+	public static final <T> void swap(List<T> n,int i,int j) {
+		Collections.<T>swap(n,i,j);
+	}
+	
+	private static void test() {
+		String[] a= {"Sushma","Nagendra"};
+		swap(a,0,1);
+		System.out.println("a:"+Arrays.toString(a));
+		List<String> n=new ArrayList<String>(Arrays.asList(a));
+		swap(n,0,1);
+		System.out.println("n:"+n);
+	}
+
+	public static void main(String[] args) {
+		
+		test();
+	}
+}
+OUTPUT:
+a:[Nagendra, Sushma]
+n:[Sushma, Nagendra]
+----------------------------------------------------------------------------------------------------------------
+3.
+package com.cg.generics;
+
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Scanner;
+
+public class Pair {
+
+	public static void main(String[] args) {
+		HashMap<String,String> string=new HashMap<>();
+		HashMap<String,java.util.Date> dayDate=new HashMap<>();
+		
+		Scanner sc=new Scanner(System.in);
+		System.out.println("Enter the key and value");
+		for(int i=0;i<3;i++) {
+			String a=sc.nextLine();
+			String b=sc.nextLine();
+			
+			string.put(a, b);
+
+		}
+		for(Map.Entry<String,String> m: string.entrySet()) {
+			System.out.println(m.getKey()+" "+m.getValue());
+			System.out.println(string);
+		}
+		
+		sc.close();
+
+	}
+
+}
+OUTPUT:
+Enter the key and value
+SUSHMA
+SUMITH
+AKASH
+AMITH
+ARYA
+DIPTI
+ARYA DIPTI
+{ARYA=DIPTI, AKASH=AMITH, SUSHMA=SUMITH}
+AKASH AMITH
+{ARYA=DIPTI, AKASH=AMITH, SUSHMA=SUMITH}
+SUSHMA SUMITH
+{ARYA=DIPTI, AKASH=AMITH, SUSHMA=SUMITH}
+-------------------------------------------------------------------------------------------------------------------------
+4.
+package com.cg.generics;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Random;
+
+public class RandomValues {
+
+	public static void main(String[] args) {
+		HashMap<Integer,String> id=new HashMap<Integer,String>();
+		id.put(0, "A");
+		id.put(1, "B");
+		id.put(2, "C");
+		id.put(3, "D");
+		id.put(4, "E");
+		id.put(5, "F");
+		id.put(6, "G");
+		id.put(7, "H");
+		id.put(8, "I");
+		id.put(9, "J");
+		
+		Object[] employeeKeys=id.keySet().toArray();
+		Object key=employeeKeys[new Random().nextInt(employeeKeys.length)];
+		System.out.println("******Random Value******\n"+key+"---->"+id.get(key));
+		
+		List<Map.Entry<Integer,String>> list=new ArrayList<Map.Entry<Integer,String>>(id.entrySet());
+		
+		
+		//To shuffle the list
+		/*System.out.println("\n ******Shuffling******");
+		Collections.shuffle(list);
+		for(Map.Entry<Integer, String> entry:list) {
+			System.out.println(entry.getKey()+"::"+entry.getValue());
+		}*/
+	}
+}
+OUTPUT:
+******Random Value******
+2---->C
+

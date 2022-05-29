@@ -1,0 +1,259 @@
+*****************************DATA STRUCTURE ASSIGNMENT******************************************
+
+1.
+package DataStructureAssgn;
+
+public class Arm100999 {
+
+	public static void main(String[] args) {
+		for (int k = 100 ; k <= 999 ; k++)
+        {
+                   int n = k;
+                   int d = 0;
+                   int s = 0;
+
+                   while (n > 0)
+                    {
+                                d = n % 10;
+                                s = s + (d * d * d);
+                                n = n / 10;
+                    }
+                    if (k == s)
+                     {
+                                System.out.println (k + " " + "is Armstrong number");
+                      }
+        }
+
+	}
+
+}
+OUTPUT:
+153 is Armstrong number
+370 is Armstrong number
+371 is Armstrong number
+407 is Armstrong number
+-------------------------------------------------------------------------------------------------------------------------
+2.
+package DataStructureAssgn;
+
+import java.util.Scanner;
+
+public class TotalAvg {
+
+	public static void main(String[] args) {
+		Scanner sc=new Scanner(System.in);
+		System.out.println("Enter the number of Students:");
+		int n=sc.nextInt();
+		
+		String name[]=new String[n];
+	    int A[]=new int[n];
+	    int B[]=new int[n];
+	    int C[]=new int[n];
+	    int grandTotal=0;
+	    
+	    for(int i=0;i<n;i++) {
+	    	sc.nextLine();
+	    	System.out.println("Enter the name of the Student"+(i+1)+"1");
+	    	name[i]=sc.nextLine();
+	    	System.out.println("Enter the marks of A:");
+	    	A[i]=sc.nextInt();
+	    	System.out.println("Enter the marks of B:");
+	    	B[i]=sc.nextInt();
+	    	System.out.println("Enter the marks of C:");
+	    	C[i]=sc.nextInt(); 	
+	    }
+	    
+	    int total;
+	    
+		
+
+	}
+
+}
+-------------------------------------------------------------------------------------------------------------------------
+3.
+package DataStructureAssgn;
+
+public class ArmstrongNum {
+
+	public static void main(String[] args) {
+		int num = 153, number, temp, total = 0;
+
+        number = num;
+        while (number != 0)
+        {
+            temp = number % 10;
+            total = total + temp*temp*temp;
+            number /= 10;
+        }
+
+        if(total == num)
+            System.out.println(num + " is an Armstrong number");
+        else
+            System.out.println(num + " is not an Armstrong number");
+		
+		
+		
+
+	}
+
+}
+OUTPUT:
+153 is an Armstrong number
+---------------------------------------------------------------------------------------------------------------------
+4.
+package DataStructureAssgn;
+
+import java.util.Arrays;
+
+public class ArraySearch {
+	
+	public static void check(int[] arr,int toCheckValue) {
+		boolean test=false;
+		for(int element: arr) {
+			if(element == toCheckValue) {
+				test = true;
+				break;
+			}
+		}
+		
+		System.out.println("Is"+" "+toCheckValue+" "+"is present in given array:"+test);
+	}
+
+	public static void main(String[] args) {
+		
+		int arr[]= {5,12,14,6,78,19,1,23,26,35,37,7,52,86,9};
+		
+		int toCheckValue=19;
+		
+		System.out.println("Array:"+Arrays.toString(arr));
+		check(arr,toCheckValue);
+
+	}
+
+}
+OUTPUT:
+Array:[5, 12, 14, 6, 78, 19, 1, 23, 26, 35, 37, 7, 52, 86, 9]
+Is 19 is present in given array:true
+----------------------------------------------------------------------------------------------------------------------
+5.
+package DataStructureAssgn;
+
+import java.util.Scanner;
+
+public class IncomeTax {
+
+	public static void main(String[] args) {
+		double result;
+		Scanner sc=new Scanner(System.in);
+		System.out.println("Enter your Annual income:");
+		float CTC= sc.nextFloat();
+		
+		if(CTC<=180000) {
+			System.out.println("You no need to pay the tax");
+		}
+		else if(CTC>=181001 && CTC<=300000) {
+			result= (CTC/100)*10;
+			System.out.println("The tax payable for"+" "+CTC+" "+"is"+" "+result);
+		}
+		else if(CTC>=300001 && CTC<=500000) {
+			result= (CTC/100)*20;
+			System.out.println("The tax payable for"+" "+CTC+" "+"is"+" "+result);
+		}
+		else if(CTC>=500001 && CTC<=1000000) {
+			result= (CTC/100)*30;
+			System.out.println("The tax payable for"+" "+CTC+" "+"is"+" "+result);
+		}
+		else
+			System.out.println("Tax information are available for the annual income upto 1000000");
+
+	}
+
+}
+OUTPUT:
+Enter your Annual income:
+200000
+The tax payable for 200000.0 is 20000.0
+------------------------------------------------------------------------------------------------------------------------
+6.
+package DataStructureAssgn;
+
+import java.util.Scanner;
+
+public class Result {
+
+	public static void main(String[] args) {
+		Scanner sc=new Scanner(System.in);
+		 System.out.println("Enter your kannada marks");
+		 int k=sc.nextInt();
+		 
+		 System.out.println("Enter your English marks");
+		 int e=sc.nextInt();
+		 
+		 System.out.println("Enter your Maths marks");
+		 int m=sc.nextInt();
+		 
+		 if(k>=60 && e>=60 && m>=60 ) {
+			 System.out.println("Keep it up!!!! You are Passed");
+		 }else if((k>=60 && e>=60 && m<60) || (k<60 && e>=60 && m>=60) || (k>=60 && e<60 && m>=60)){
+			 System.out.println(" Prepare well!!!!  You are promoted");
+		 }else 
+			 System.out.println("Do Hard Work....You failed");
+	}
+
+}
+OUTPUT:
+Enter your kannada marks
+80
+Enter your English marks
+50
+Enter your Maths marks
+90
+ Prepare well!!!!  You are promoted
+---------------------------------------------------------------------------------------------------------------------------------
+7.
+package DataStructureAssgn;
+
+public class SortBubble {
+	
+	static void bubbleSort(int[] arr) {  
+        int n = arr.length;  
+        int temp = 0;  
+         for(int i=0; i < n; i++){  
+                 for(int j=1; j < (n-i); j++){  
+                          if(arr[j-1] > arr[j]){  
+                                  
+                                 temp = arr[j-1];  
+                                 arr[j-1] = arr[j];  
+                                 arr[j] = temp;  
+                         }  
+                          
+                 }  
+         }  
+  
+    }  
+
+	public static void main(String[] args) {
+		 int arr[] ={5,12,14,6,78,19,1,23,26,35,37,7,52,86,9};  
+         
+         System.out.println("Array Before Bubble Sort");  
+         for(int i=0; i < arr.length; i++){  
+                 System.out.print(arr[i] + " ");  
+         }  
+         System.out.println();  
+           
+         bubbleSort(arr); 
+          
+         System.out.println("Array After Bubble Sort");  
+         for(int i=0; i < arr.length; i++){  
+                 System.out.print(arr[i] + " ");  
+         }  
+
+ }  
+}
+OUTPUT:
+Array Before Bubble Sort
+5 12 14 6 78 19 1 23 26 35 37 7 52 86 9 
+Array After Bubble Sort
+1 5 6 7 9 12 14 19 23 26 35 37 52 78 86 
+	    

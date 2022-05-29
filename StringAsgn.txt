@@ -1,0 +1,198 @@
+--------------------String---------------------
+
+1.
+package StringAssgn;
+
+public class LenConcat {
+
+	public static void main(String[] args) {
+		String str= "hello world";
+		System.out.println(str.length());
+		
+		String str1= "how are you";
+		System.out.println(str+" "+str1);
+
+	}
+
+}
+
+output:
+11
+hello world how are you
+*******************************************************************************************************************
+2.
+package StringAssgn;
+
+public class UpperLower {
+
+	public static void main(String[] args) {
+		String str="java String pool refers to collection of string which are stored in heap memory";
+		
+		System.out.println(str.toLowerCase());
+		System.out.println(str.toUpperCase());
+		
+		String replaceString= str.replaceAll("a", "e");
+		System.out.println(replaceString);
+		
+		boolean isExists = str.contains("collection");
+		System.out.println(isExists);
+
+	}
+
+}
+
+output:
+java string pool refers to collection of string which are stored in heap memory
+JAVA STRING POOL REFERS TO COLLECTION OF STRING WHICH ARE STORED IN HEAP MEMORY
+jeve String pool refers to collection of string which ere stored in heep memory
+true
+
+-----------------------StringBuffer------------------------
+
+1.
+package StringAssgn;
+
+public class StringAppend {
+
+	public static void main(String[] args) {
+		StringBuffer s = new StringBuffer("StringBuffer");
+		System.out.println(s);
+		
+		s.append(" ");
+		s.append("is a peer class of String");
+		s.append(" ");
+		s.append("that provides much of");
+		s.append(" ");
+		s.append("the functionality of Strings.");
+		
+		System.out.println(s);
+	 
+
+	}
+
+}
+
+output:
+StringBuffer
+StringBuffer is a peer class of String that provides much of the functionality of Strings.
+
+*********************************************************************************************************************
+
+2.
+package StringAssgn;
+
+public class StringInsert {
+
+	public static void main(String[] args) {
+		StringBuffer s= new StringBuffer("it is used to at the specified index position");
+		System.out.println(s);
+		
+		s.insert(13, "insert text");
+		
+		System.out.println(s);
+		
+
+	}
+
+}
+
+output:
+it is used to at the specified index position
+it is used toinsert text  at the specified index position
+
+********************************************************************************************************************
+
+3.
+package StringAssgn;
+
+public class StringReverse {
+
+	public static void main(String[] args) {
+		StringBuffer s=new StringBuffer("this method returns the reversed object on which it was called");
+		System.out.println(s);
+		
+		s.reverse();
+		System.out.println(s);
+
+	}
+
+}
+
+output:
+this method returns the reversed object on which it was called
+dellac saw ti hcihw no tcejbo desrever eht snruter dohtem siht
+
+-------------------StringBuilder--------------------
+
+1.
+package StringAssgn;
+
+public class BuilderAppend {
+
+	public static void main(String[] args) {
+		StringBuilder s = new StringBuilder("StringBuffer");
+		System.out.println(s);
+		
+		s.append(" ");
+		s.append("is a peer class of String");
+		s.append(" ");
+		s.append("that provides much of");
+		s.append(" ");
+		s.append("the functionality of Strings.");
+		
+		System.out.println(s);
+
+	}
+
+}
+
+output:
+StringBuffer
+StringBuffer is a peer class of String that provides much of the functionality of Strings.
+
+********************************************************************************************************************
+2.
+package StringAssgn;
+
+public class BuilderInsert {
+
+	public static void main(String[] args) {
+		StringBuilder s= new StringBuilder("it is used to at the specified index position");
+		System.out.println(s);
+		
+		s.insert(13, "insert text");
+		
+		System.out.println(s);
+
+	}
+
+}
+
+output:
+it is used to at the specified index position
+it is used toinsert text at the specified index position
+
+*******************************************************************************************************************
+3.
+package StringAssgn;
+
+public class BuilderReturn {
+
+	public static void main(String[] args) {
+				StringBuilder s=new StringBuilder("this method returns the reversed object on which it was called");
+				System.out.println(s);
+				
+				s.reverse();
+				System.out.println(s);
+
+		
+
+	}
+
+}
+
+output:
+this method returns the reversed object on which it was called
+dellac saw ti hcihw no tcejbo desrever eht snruter dohtem siht
+
+

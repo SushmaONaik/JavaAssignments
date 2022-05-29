@@ -1,0 +1,252 @@
+*************************OOPS ASSIGNMENTS******************************
+
+1.
+package com.cg.OOPS;
+
+abstract class Shape{
+	abstract void draw();
+}
+
+class Rectangle extends Shape{
+
+	@Override
+	void draw() {
+		System.out.println("Drawing Rectangle");
+		
+	}
+	
+}
+
+class Triangle extends Shape{
+
+	@Override
+	void draw() {
+		System.out.println("Drawing Triangle");
+		
+	}
+	
+}
+
+class Circle extends Shape{
+
+	@Override
+	void draw() {
+		System.out.println("Drawing Circle");
+		
+	}
+	
+}
+
+public class ShapeMain {
+
+	public static void main(String[] args) {
+		Shape s1=new Rectangle();
+		s1.draw();
+		
+		Shape s2=new Triangle();
+		s2.draw();
+		
+		Shape s3=new Circle();
+		s3.draw();
+
+	}
+
+}
+
+OUTPUT:
+Drawing Rectangle
+Drawing Triangle
+Drawing Circle
+
+----------------------------------------------------------------------------------------------------------------------
+2.
+package com.cg.OOPS;
+
+class Employee {
+	void totalSalary() {
+		 System.out.println("TOTAL SALARY");
+		 
+	}
+}
+
+class Labour extends Employee {
+	
+	@Override
+	void totalSalary() {
+		double labourSalary=5000;
+		double overTime=1000;
+		System.out.println("Salary with overtime amount is"+" "+(labourSalary+overTime));
+	}
+}
+
+class Manager extends Employee{
+	 
+	 @Override
+	 void totalSalary() {
+		 double managerSalary=10000;
+		 double incentive=1500;
+		 System.out.println("salary with incentive amount"+" "+(managerSalary+incentive));
+	 }
+}
+
+class Main{
+	
+	public static void main(String args[]) {
+		Manager m=new Manager();
+		m.totalSalary();
+		
+		Labour n=new Labour();
+		n.totalSalary();
+	}
+	
+}
+
+OUTPUT:
+salary with incentive amount 11500.0
+Salary with overtime amount is 6000.0
+
+----------------------------------------------------------------------------------------------------------------------
+3.
+package com.cg.OOPS;
+
+abstract class Persistance {
+	
+	abstract void persist();
+		
+
+}
+
+class FilePersistance extends Persistance{
+
+	@Override
+	void persist() {
+		System.out.println("client data is stored in terms of file format");
+	}
+	
+}
+
+class DatabasePersistance extends Persistance{
+
+	@Override
+	void persist() {
+		System.out.println("client data is stored in terms of database format");
+		
+	}
+	
+}
+
+public class FilesAndDatabase{
+	
+	public static void main(String args[]) {
+		FilePersistance fp= new FilePersistance();
+		fp.persist();
+		
+		DatabasePersistance db= new DatabasePersistance();
+		db.persist();
+	}
+}
+
+OUTPUT:
+client data is stored in terms of file format
+client data is stored in terms of database format
+-----------------------------------------------------------------------------------------------------------------------
+4.
+package com.cg.OOPS;
+
+import java.util.Scanner;
+
+abstract class DessertItem{
+	abstract int getCost(int Cost);	
+}
+
+class Candy extends DessertItem{
+	
+	int dollorCurrency=60;
+
+	@Override
+	int getCost(int Cost) {
+		
+		return Cost*dollorCurrency;	
+	}	
+}
+
+class Cookie extends DessertItem{
+	
+	int euroCurrency=70;
+
+	@Override
+	int getCost(int Cost) {
+		
+		return Cost*euroCurrency;	
+	}
+}
+
+class IceCream extends DessertItem{
+
+	@Override
+	int getCost(int Cost) {
+		
+		return Cost;	
+	}	
+}
+
+class DessertItems{
+	
+	public String addItems(String item1,String item2,String item3) {
+		return item1+item2+item3+" "+ ":3 Dessert added successfully";	
+	}	
+}
+
+
+public class DessertShop extends DessertItems {
+
+	public static void main(String[] args) {
+		
+		Scanner sc=new Scanner(System.in);
+		System.out.println("Enter the role: Customer (or) Owner");
+		String role=sc.next();
+		
+		if(role.equals("Owner")) {
+			DessertShop ds=new DessertShop();
+			System.out.println(ds.addItems("Candy", "Cookie", "IceCream"));
+		}
+		else if(role.equals("Customer")) {
+			System.out.println("way to heaven!!!! Enjoy your treats");
+			System.out.println("---------------------------------------------");
+			
+			DessertItem s1=new Candy();
+			System.out.println("Candy:"+s1.getCost(1)+" "+"in rupees");
+			
+			DessertItem s2=new Cookie();
+			System.out.println("Cookie:"+s2.getCost(1)+" "+"in rupees");
+			
+			DessertItem s3=new IceCream();
+			System.out.println("IceCream:"+s3.getCost(1)+" "+"in rupees");
+			
+			System.out.println("Select your Treat");
+			
+		}
+		
+		else {
+			System.out.println("please enter valid input");
+		}
+		
+		sc.close();
+	}
+
+}
+
+OUTPUT:
+Enter the role: Customer (or) Owner
+Customer
+way to heaven!!!! Enjoy your treats
+---------------------------------------------
+Candy:60 in rupees
+Cookie:70 in rupees
+IceCream:1 in rupees
+Select your Treat
+
+Enter the role: Customer (or) Owner
+Owner
+CandyCookieIceCream :3 Dessert added successfully
+-----------------------------------------------------------------------------------------------------------------------
