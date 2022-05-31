@@ -1,0 +1,145 @@
+**********ANNOTATION ASSIGNMENT**************
+
+1.
+package com.cg.annotation;
+
+import java.lang.annotation.*;  
+import java.lang.reflect.*;  
+  
+@Retention(RetentionPolicy.RUNTIME)  
+@Target(ElementType.METHOD)  
+@interface TestCase{  
+	String value();   
+}  
+  
+  
+class Test{  
+@TestCase(value="Testcase")  
+public void sayTest(){
+	System.out.println("hello annotation");
+	}  
+}  
+  
+  
+class TestCustomAnnotation1{  
+public static void main(String args[])throws Exception
+{  
+  
+Test h=new Test();  
+Method m=h.getClass().getMethod("sayTest");  
+  
+TestCase tc=m.getAnnotation(TestCase.class);  
+System.out.println(tc.value()); 
+
+	}
+}  
+--------------------------------------------------------------------------------------------------------
+
+2.
+package com.cg.annotation;
+
+import java.lang.annotation.*;
+import java.lang.reflect.*;
+
+@Retention(RetentionPolicy.RUNTIME)
+@Target(ElementType.TYPE)
+@interface info{
+	int id();
+	String name();
+	String Date();
+	String Time();
+	double version();
+}
+
+@info(id=345786,name="Sushma",Date="31/05/2022",Time="8:00PM",version=1.3)
+
+class Data{
+	String getDetails;
+	public Data(String getDetails) {
+		super();
+		this.getDetails=getDetails;
+	}
+}
+
+public class TestCustomAnnotation2 {
+
+	public static void main(String[] args) {
+		Data d=new Data("of sushma");
+		Class c=d.getClass();
+		Annotation a=c.getAnnotation(info.class);
+		info i=(info)a;
+		
+		System.out.println(i.id());
+		
+		System.out.println(i.name());
+		System.out.println(i.Date());
+		System.out.println(i.Time());
+		System.out.println(i.version());
+
+	}
+
+}
+OUTPUT:
+345786
+Sushma
+31/05/2022
+8:00PM
+1.3
+--------------------------------------------------------------------------------------------------------------
+3.
+package com.cg.annotation;
+
+import java.lang.annotation.*;
+import java.lang.annotation.RetentionPolicy;
+import java.lang.reflect.*;
+
+@Retention(value=RetentionPolicy.RUNTIME)
+@Target(value=ElementType.METHOD)
+@interface execute{
+	int sequence();
+}
+
+class User{
+	
+	@execute(sequence=2)
+	public void myMethod1() {
+		System.out.println("my method 1");
+	}
+	
+	@execute(sequence=1)
+	public void myMethod2() {
+		System.out.println("my method 2");
+	}
+	
+	@execute(sequence=3)
+	public void myMethod3() {
+		System.out.println("my method 3");
+	}
+}
+
+public class TestCustomAnnotation3 {
+
+	public static void main(String[] args) {
+		User t=new User();
+		Method[] methods=t.getClass().getMethods();
+		
+		for(Method method:methods) {
+			execute a=method.getAnnotation(execute.class);
+			if (a!=null) {
+				try {
+					method.invoke(t);
+				} catch (Exception e) {
+					
+					e.printStackTrace();
+				
+				}
+			}
+		}
+
+	}
+
+}
+OUTPUT:
+my method 2
+my method 1
+my method 3
